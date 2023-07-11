@@ -1,0 +1,18 @@
+::-webkit-scrollbar {
+  width: 0.5em; /* Adjust the width as needed */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; /* Set a transparent background */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Set a color for the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Set a color for the scrollbar handle on hover */
+}

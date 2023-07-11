@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+  
+main {
+  padding: 35px;
+  max-width: 960px;
+}
+  
+body {
+  font-family:  "Nunito", sans-serif;
+  scroll-behavior: smooth;
+}
+
+@media screen and (max-width: 982px) {
+  main {
+    padding: 20px;
+    max-width: 1800px;
+    
+  }
+  .card {
+    min-width: 55%;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  main {
+    padding: 20px;
+    max-width: 1800px;
+    
+  }
+  .card {
+    min-width: 100%;
+  }
+}
+
+@media screen and (min-width: 982px) {
+  main {
+    padding: 20px;
+    max-width: 1800px;
+    
+  }
+  .card {
+    min-width: 40%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  main {
+    padding: 20px;
+    max-width: 1800px;
+    
+  }
+  .card {
+    min-width: 35%;
+  }
+}
+
+
+@media screen and (min-width: 2022px) {
+  main {
+    padding: 35px;
+    max-width: 3000px;
+  }
+  .card {
+    min-width: 50%;
+  }
+}
+
+.article {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+    
+img {
+  width: 100%;
+  height: auto;
+}
+    
+  
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+  
+.logo {
+  font-weight: bold;
+  font-size: 25px;
+}
+  
+.login {
+  font-weight: 400;
+  font-size: large;
+}
+  
+header nav {
+  display: flex;
+  gap:20px;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 7px 9px;
+}
+
+form {
+  width: 100%;
+  padding: 20px;
+}
+
+.login-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh
+}
+  
+.btn-reg {
+  padding: 8px;
+  border: 0;
+  background-color: skyblue;
+  border-radius: 8px;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.user {
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.user.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
