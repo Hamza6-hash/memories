@@ -3,11 +3,6 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Box,
   Avatar,
   useMediaQuery,
@@ -15,8 +10,7 @@ import {
 } from "@mui/material";
 
 import {
-  Menu,
-  Home,
+  HomeSharp,
   Logout,
   WbSunny,
   DirectionsRun,
@@ -25,16 +19,14 @@ import {
 } from "@mui/icons-material";
 
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Post from "./Post";
-import { setLogout } from "../../state";
+import { setLogout } from "../state";
 import moment from "moment";
 
 function Header() {
   /* States */
   const isMobileScreens = useMediaQuery("(max-width: 1000px)");
-  const [openDrawer, setOpenDrawer] = useState(false);
 
   /* Reading react-redux stores */
   const user = useSelector((state) => state.user);
@@ -58,9 +50,6 @@ function Header() {
   }
 
   /* Opening drawer for screen width 1000px */
-  const toggleDrawer = () => {
-    setOpenDrawer(!openDrawer);
-  };
 
   const logout = async (id) => {
     try {
@@ -76,29 +65,30 @@ function Header() {
     <>
       <AppBar position="fixed">
         <Toolbar>
-          {isMobileScreens ? (
+          {/* {isMobileScreens ? (
             <IconButton color="inherit" edge="start" onClick={toggleDrawer}>
               <Menu />
             </IconButton>
-          ) : null}
+          ) : null} */}
           {isMobileScreens ? null : (
-            <Typography
-              variant="h5"
-              component="div"
-              sx={{ flexGrow: 1, fontStyle: "italic" }}
-            >
-              MEMORIES
-            </Typography>
+            <>
+              <Typography
+                variant="h5"
+                component="div"
+                sx={{ flexGrow: 1, fontStyle: "italic" }}
+              >
+                MEMORIES
+              </Typography>
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ flexGrow: 1, whiteSpace: "nowrap" }}
+              >
+                {greeting} {user.firstName} {user.lastName}
+                {icon}
+              </Typography>
+            </>
           )}
-
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, whiteSpace: "nowrap" }}
-          >
-            {greeting} {user.firstName} {user.lastName}
-            {icon}
-          </Typography>
 
           {isMobileScreens ? null : (
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
@@ -138,7 +128,7 @@ function Header() {
 
               <IconButton sx={{ mr: "10px" }}>
                 <Link to={"/home"}>
-                  <Home color="primary" fontSize="large" />
+                  <HomeSharp color="primary" fontSize="large" />
                 </Link>
               </IconButton>
 
@@ -157,10 +147,54 @@ function Header() {
               </Tooltip>
             </Box>
           )}
+
+          {isMobileScreens ? (
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <IconButton>
+                <HomeSharp />
+              </IconButton>
+              <IconButton
+                sx={{ mx: "10px" }}
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <Link
+                  style={{ color: "inherit", textDecoration: "none" }}
+                  to={`/profile/${_id}`}
+                >
+                  <Avatar
+                    sx={{ objectFit: "cover" }}
+                    src={`http://localhost:3001/assets/${user.picturePath}`}
+                  />
+                </Link>
+              </IconButton>
+              <Tooltip arrow title="logout">
+                <Link to={"/"}>
+                  <IconButton
+                    onClick={() => {
+                      dispatch(setLogout());
+                      logout(user._id);
+                    }}
+                    sx={{ mx: "10px" }}
+                  >
+                    <Logout fontSize="large" color="error" />
+                  </IconButton>
+                </Link>
+              </Tooltip>
+              <IconButton sx={{ mx: "10px" }}>
+                <Link to="/users">
+                  <People color="secondary" fontSize="large" />
+                </Link>
+              </IconButton>
+            </Box>
+          ) : null}
         </Toolbar>
 
         {/* For width only and below 1000px  */}
-        <Drawer
+        {/* <Drawer
           sx={{
             "& .MuiPaper-root": {
               backgroundColor: "black",
@@ -238,7 +272,7 @@ function Header() {
               </ListItem>
             </Link>
           </List>
-        </Drawer>
+        </Drawer> */}
       </AppBar>
 
       <Post />

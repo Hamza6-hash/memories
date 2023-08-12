@@ -35,6 +35,13 @@ export const authSlice = createSlice({
             });
             state.posts = updatedPosts;
         },
+        setFollowers: (state, action) => {
+            if (state.user) {
+                state.user.followers = action.payload.followers
+            } else {
+                console.log("Followers not-exist :(")
+            }
+        },
         deleteePost: (state, action) => {
             const deletedPostId = action.payload.id;
             const updatedPosts = state.posts.filter((post) => post._id !== deletedPostId);

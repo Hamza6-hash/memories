@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { setPosts, setPost, deleteePost } from "../state";
+import { setPosts, setPost, deleteePost } from "../../state";
 import { useEffect, useState } from "react";
 
 import {
@@ -162,11 +162,11 @@ export default function User() {
 
   return (
     <>
-      <main style={{ marginTop: "15%" }}>
+      <main className="post">
         {post.length !== 0 ? (
           post.map((posts) => (
             <div key={posts._id} className="article">
-              <Card className="card" sx={{ maxWidth: 300, height: "10%" }}>
+              <Card className="card" sx={{ maxWidth: 450 }}>
                 <CardHeader
                   avatar={
                     <IconButton>
@@ -174,6 +174,11 @@ export default function User() {
                         <Avatar
                           alt="post-profile-pic"
                           src={`http://localhost:3001/assets/${posts.userId.picturePath}`}
+                          sx={{
+                            objectFit: "cover",
+                            width: "60px",
+                            height: "60px",
+                          }}
                         />
                       </Link>
                     </IconButton>
@@ -200,7 +205,7 @@ export default function User() {
                         variant="standard"
                       />
                     ) : (
-                      <Typography>
+                      <Typography sx={{ whiteSpace: "no-wrap" }}>
                         {posts.userId.firstName} {posts.userId.lastName} has
                         shared a memory about {posts.title}...
                       </Typography>
@@ -212,7 +217,6 @@ export default function User() {
                 {posts.picturePath ? (
                   <CardMedia
                     component="img"
-                    height={"10px"}
                     image={`http://localhost:3001/assets/${posts.picturePath}`}
                   />
                 ) : (
@@ -220,6 +224,7 @@ export default function User() {
                     sx={{ whiteSpace: "nowrap" }}
                     variant="h1"
                     color="text.secondary"
+                    textAlign="center"
                   >
                     Memory
                   </Typography>

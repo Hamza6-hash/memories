@@ -13,9 +13,9 @@ import {
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import moment from "moment";
-import Header from "./widgets/Header";
+import Header from "../../components/Header";
 
-export default function Users() {
+export default function Members() {
   /* States */
   const [searchTerm, setSearchTerm] = useState("");
   const [searchUser, setSearchUser] = useState(null);

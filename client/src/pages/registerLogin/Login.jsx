@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Typography, Paper, Snackbar, Alert } from "@mui/material";
-import { setLogin } from "../state/index";
+import { setLogin } from "../../state/index";
 import { useDispatch } from "react-redux";
 
 const Login = () => {

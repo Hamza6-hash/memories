@@ -107,3 +107,36 @@ export const searchUser = async (req, res) => {
         res.status(500).json({ error: error.msg })
     }
 }
+
+
+export const addRemoveUser = async (req, res) => {
+    try {
+        const { id, friendId } = req.params
+        const user = await User.findById(id)
+        const friend = await User.findById(id)
+
+        if (user.followers.includes(friendId)) {
+            user.followers = user.followers.filter((id) => id !== friendId)
+            friend.followers = friend.followers.filter((id) => id !== id)
+        } else {
+            user.followers.push(friendId)
+            friend.followers.push(id)
+        }
+        await user.save()
+        await friend.save()
+
+        const friends = await Promise.all(
+            user.followers.map((id) => User.findById(id))
+        )
+
+        const formattedFollowers = friends.map(
+            ({ _id, firstName, lastName, email, picturePath, bio, followers, loginTime, logoutTime }) => {
+                return { _id, firstName, lastName, email, picturePath, bio, followers, loginTime, logoutTime }
+            }
+        )
+        res.status(200).json(formattedFollowers)
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ error: error.msg })
+    }
+}

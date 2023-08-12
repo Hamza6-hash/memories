@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { setUserPost, setUserPosts, deleteeUserPost, setPost } from "../state";
+import { setUserPost, setUserPosts, deleteeUserPost } from "../../state";
 
 import {
   Card,
@@ -26,7 +26,7 @@ import {
   Box,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/widgets/Header";
+import Header from "../../components/Header";
 
 import {
   Favorite,
@@ -39,7 +39,7 @@ import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import moment from "moment";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import AccountCircleTwoToneIcon from "@mui/icons-material/AccountCircleTwoTone";
-import "../CustomScrollbar.css";
+import "../../CustomScrollbar.css";
 
 const profileStyles = {
   root: {
@@ -53,6 +53,7 @@ const profileStyles = {
     width: "100px",
     height: "100px",
     marginBottom: "10px",
+    objectFit: "cover",
   },
   name: {
     marginTop: "8px",
@@ -128,14 +129,14 @@ const Profile = () => {
     }
 
     // console.log(updatedPost);
-    dispatch(setPost({ post: updatedPosts }));
+    dispatch(setUserPost({ userPost: updatedPosts }));
   };
 
   useEffect(() => {
     getPost();
     getUserProfile();
     // eslint-disable-next-line
-  }, []);
+  }, [id]);
 
   /* Getting User profile */
   const getUserProfile = async () => {
@@ -145,6 +146,7 @@ const Profile = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await response.json();
+      // console.log(data);
       setUser(data);
     } catch (error) {
       console.log(error);
@@ -264,7 +266,7 @@ const Profile = () => {
         }
       );
       const updatedPosts = await res.json();
-      dispatch(setPost({ post: updatedPosts }));
+      dispatch(setUserPost({ userPost: updatedPosts }));
     } catch (error) {
       console.log(error);
     }
@@ -445,10 +447,12 @@ const Profile = () => {
         )}
       </div>
       <Divider />
+      <Divider />
 
+      {/* User Posts */}
       {userPosts.map((posts) => (
         <div key={posts._id} className="article" style={{ marginTop: "80px" }}>
-          <Card className="card" sx={{ maxWidth: 300 }}>
+          <Card className="card" sx={{ maxWidth: 500 }}>
             <CardHeader
               sx={{ fontFamily: "sans-serif" }}
               avatar={

@@ -14,11 +14,11 @@ import EditIcon from "@mui/icons-material/Edit";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import AddAPhotoRoundedIcon from "@mui/icons-material/AddAPhotoRounded";
 import { useState } from "react";
-import { setPosts } from "../../state";
+import { setPosts } from "../state";
 import { useDispatch, useSelector } from "react-redux";
 // import memLamp from "../../images/memLamp.webp";
 // import memPics from "../../images/memPics.jpg";
-import memWatch from "../../images/memWatch.jpg";
+import memWatch from "../images/memWatch.jpg";
 
 const Posts = () => {
   /* States */
@@ -94,7 +94,7 @@ const Posts = () => {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
-            filter: "blur(0.6px)",
+            filter: "opacity(90%)",
           },
         }}
         fullWidth
@@ -115,6 +115,7 @@ const Posts = () => {
                 margin="dense"
                 label="title"
                 type="text"
+                sx={{ color: "black", fontWeight: "1000" }}
                 variant="standard"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -152,16 +153,19 @@ const Posts = () => {
                   <div
                     style={{ display: "flex", justifyContent: "flex-start" }}
                   >
-                    <IconButton sx={{ ":hover": { cursor: "pointer" } }}>
-                      <label htmlFor="Pic">
-                        <AddAPhotoRoundedIcon />
+                    <IconButton>
+                      <label htmlFor="add photo">
+                        <AddAPhotoRoundedIcon
+                          sx={{ ":hover": { cursor: "pointer" } }}
+                        />
                         <input
-                          id="Pic"
+                          id="add photo"
                           style={{ display: "none" }}
                           type="file"
                           value=""
                           onChange={(e) => setPicturePath(e.target.files[0])}
                         />
+                        Upload Photo
                       </label>
                     </IconButton>
                   </div>

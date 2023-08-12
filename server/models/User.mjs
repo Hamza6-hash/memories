@@ -11,7 +11,8 @@ const UserSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: [true, "Email already exist"]
     },
     password: {
         type: String,
@@ -24,6 +25,10 @@ const UserSchema = new mongoose.Schema({
     bio: {
         type: String,
         default: "",
+    },
+    followers: {
+        type: Array,
+        default: []
     },
     loginTime: {
         type: Date,

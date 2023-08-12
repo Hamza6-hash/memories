@@ -62,6 +62,30 @@ export const login = async (req, res) => {
 }
 
 
+export const changePassword = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { oldPassword, newPassword, confirmPassword } = req.body
+        const user = await User.findById(id)
+
+        const isMatch = await bcrypt.compare(oldPassword, user.password)
+
+        if (!isMatch) return res.status(404).json("Incorrect old password")
+
+        if (newPassword !== confirmPassword) return res.status(400).json("Your new password and confrim password didn't match")
+
+        const hashOldPassword = await bcrypt.hash(oldPassword, 10)
+        user.password = hashOldPassword
+        user.save()
+
+        res.status(200).json("Password upadted successfully")
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ error: error.msg })
+    }
+}
+
+
 export const logout = async (req, res) => {
     try {
         const { id } = req.params

@@ -5,8 +5,8 @@
 }
   
 main {
-  padding: 35px;
-  max-width: 960px;
+  margin-top: -41%;
+
 }
   
 body {
@@ -14,60 +14,6 @@ body {
   scroll-behavior: smooth;
 }
 
-@media screen and (max-width: 982px) {
-  main {
-    padding: 20px;
-    max-width: 1800px;
-    
-  }
-  .card {
-    min-width: 55%;
-  }
-}
-
-@media screen and (max-width: 690px) {
-  main {
-    padding: 20px;
-    max-width: 1800px;
-    
-  }
-  .card {
-    min-width: 100%;
-  }
-}
-
-@media screen and (min-width: 982px) {
-  main {
-    padding: 20px;
-    max-width: 1800px;
-    
-  }
-  .card {
-    min-width: 40%;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  main {
-    padding: 20px;
-    max-width: 1800px;
-    
-  }
-  .card {
-    min-width: 35%;
-  }
-}
-
-
-@media screen and (min-width: 2022px) {
-  main {
-    padding: 35px;
-    max-width: 3000px;
-  }
-  .card {
-    min-width: 50%;
-  }
-}
 
 .article {
   display: flex;
@@ -77,10 +23,10 @@ body {
   margin-bottom: 50px;
 }
     
-img {
+/* img {
   width: 100%;
   height: auto;
-}
+} */
     
   
 header a {
@@ -147,4 +93,42 @@ button:hover {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+.follow-side-bar {
+  max-width: 20%;
+  margin-top: 10%;
+  margin-left: 3%;
+  height: 500px;
+}
+
+.account-sidebar {
+  position: absolute;
+  right: 3%;
+}
+
+
+@media screen and (max-width: 1182px) {
+  .post {
+    margin-left: 20%;
+  }
+  .card {
+    margin-right: 25%;
+  }
+}
+
+
+@media screen and (max-width: 1005px) {
+  .post {
+    margin-left: 0;
+    margin-top: 10%;
+  }
+  .card {
+    margin-right: 0;
+    min-width: 50%;
+  }
+}
+
+
+
 

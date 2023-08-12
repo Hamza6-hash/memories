@@ -26,16 +26,10 @@ const postSchema = new mongoose.Schema({
         type: Map,
         of: Boolean
     },
-
-    // comments: {
-    //     type: Array,
-    //     default: []
-    // }
     comments: [
         {
             userId: {
                 type: mongoose.Schema.Types.ObjectId,
-                // type: String,
                 required: true,
                 ref: "User",
             },
@@ -48,7 +42,27 @@ const postSchema = new mongoose.Schema({
                 type: Date,
                 default: Date.now()
             }
-        }]
+        }],
+    // reply: [
+    //     {
+    //         userId: {
+    //             type: mongoose.Schema.Types.ObjectId,
+    //             required: true,
+    //             ref: "User"
+    //         },
+    //         commentId: {
+
+    //         },
+    //         reply: {
+    //             type: String,
+    //             required: true,
+    //         },
+    //         date: {
+    //             type: Date,
+    //             default: Date.now()
+    //         }
+    //     }
+    // ]
 
 }, { timestamps: true })
 
