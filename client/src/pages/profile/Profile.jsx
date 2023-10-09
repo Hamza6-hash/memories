@@ -292,10 +292,10 @@ const Profile = () => {
           </IconButton>
           <img
             style={{
-              maxWidth: "50%",
-              maxHeight: "100%",
+              maxWidth: "75%",
+              maxHeight: "75%",
               objectFit: "cover",
-              marginTop: "10%",
+              borderRadius: "35%",
             }}
             src={`http://localhost:3001/assets/${user.picturePath}`}
             alt=""

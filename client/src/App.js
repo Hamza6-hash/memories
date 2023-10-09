@@ -4,9 +4,9 @@ import {
   Route,
   Navigate
 } from 'react-router-dom'
-import Register from './pages/registerLogin/Register';
+import Register from './pages/Auth/Register';
 import Home from './pages/home/Home';
-import Login from './pages/registerLogin/Login';
+import Login from './pages/Auth/Login';
 import Profile from './pages/profile/Profile';
 import Members from './pages/members/Members';
 import "./App.css"

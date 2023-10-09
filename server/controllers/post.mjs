@@ -27,10 +27,10 @@ export const createPost = async (req, res) => {
 
 export const getPosts = async (req, res) => {
     try {
-        const post = await Post.find({}, null, { sort: { _id: -1 } }).populate("comments.userId").populate("userId")
+        const posts = await Post.find({}, null, { sort: { _id: -1 } }).populate("comments.userId").populate("userId")
 
         // if (!post || posts.length === 0) return res.status(404).json("No posts found");
-        const posts = post.sort(() => Math.random() - 0.5);
+        // const posts = post.sort(() => Math.random() - 0.5);
 
         res.status(200).json(posts);
     } catch (error) {

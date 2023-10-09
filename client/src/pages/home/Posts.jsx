@@ -265,11 +265,17 @@ export default function User() {
                 </CardContent>
 
                 <CardActions disableSpacing>
-                  <Paper>
+                  <Paper
+                    sx={{
+                      width: "100%",
+                      justifyContent: "space-evenly",
+                    }}
+                  >
                     <Stack
                       direction="row"
                       divider={<Divider orientation="vertical" flexItem />}
                       spacing={1}
+                      alignItems="center"
                     >
                       <IconButton onClick={() => patchLike(posts._id)}>
                         {posts.likes[userId] ? (
@@ -282,7 +288,6 @@ export default function User() {
                       <Typography
                         sx={{
                           position: "relative",
-                          top: 8,
                           whiteSpace: "nowrap",
                         }}
                       >
@@ -295,16 +300,12 @@ export default function User() {
                           setEditComment(posts._id);
                         }}
                       >
-                        <Forum
-                          color="primary"
-                          // sx={{ color: "#42a5f5" }}
-                        />
+                        <Forum color="primary" />
                       </IconButton>
 
                       <Typography
                         sx={{
                           position: "relative",
-                          top: 8,
                           whiteSpace: "nowrap",
                         }}
                       >
@@ -395,7 +396,6 @@ export default function User() {
                         margin="dense"
                         onChange={(e) => setComment(e.target.value)}
                       />
-
                       <Button
                         disabled={!comment}
                         type="submit"
